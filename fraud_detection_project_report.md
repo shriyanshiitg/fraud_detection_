@@ -67,7 +67,7 @@ We joined on `TransactionID` using a **left join anchored to the identity table*
 
 ### 3.1 Class Imbalance
 
-![Class imbalance — fraud vs non-fraud counts and percentages](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_01_class_imbalance.png)
+![Class imbalance — fraud vs non-fraud counts and percentages](reports/figures/eda_01_class_imbalance.png)
 
 The dataset contains **125,487 legitimate** and **18,746 fraudulent** transactions — a **1 : 6.7 class ratio**. We handled this with two complementary strategies:
 
@@ -76,7 +76,7 @@ The dataset contains **125,487 legitimate** and **18,746 fraudulent** transactio
 
 ### 3.2 Missingness Analysis
 
-![Missingness distribution — fraction of columns at each null rate](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_02a_missingness_hist.png)
+![Missingness distribution — fraction of columns at each null rate](reports/figures/eda_02a_missingness_hist.png)
 
 Missingness is extreme and structured:
 
@@ -86,7 +86,7 @@ Missingness is extreme and structured:
 
 A critical finding: **missingness is not random with respect to fraud**:
 
-![Missingness difference — fraud vs non-fraud rows for key columns](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_02b_missingness_fraud_diff.png)
+![Missingness difference — fraud vs non-fraud rows for key columns](reports/figures/eda_02b_missingness_fraud_diff.png)
 
 Several columns show 20–27 percentage-point null-rate differences between fraud and non-fraud rows:
 
@@ -97,7 +97,7 @@ This motivated explicit **missingness-as-signal flag features**.
 
 ### 3.3 Transaction Amount Distribution
 
-![TransactionAmt — log-scale density comparison, fraud vs non-fraud](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_03a_transaction_amt.png)
+![TransactionAmt — log-scale density comparison, fraud vs non-fraud](reports/figures/eda_03a_transaction_amt.png)
 
 TransactionAmt is heavily right-skewed. On log scale:
 - Distributions partially overlap, but fraud concentrates at specific amount bands
@@ -107,11 +107,11 @@ TransactionAmt is heavily right-skewed. On log scale:
 ### 3.4 Card and Product Categorical Features
 
 ````carousel
-![Card network (card4) — fraud rate by category](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_03b_card4.png)
+![Card network (card4) — fraud rate by category](reports/figures/eda_03b_card4.png)
 <!-- slide -->
-![Card type (card6) — fraud rate by category](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_03b_card6.png)
+![Card type (card6) — fraud rate by category](reports/figures/eda_03b_card6.png)
 <!-- slide -->
-![ProductCD — fraud rate by product category](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_03b_ProductCD.png)
+![ProductCD — fraud rate by product category](reports/figures/eda_03b_ProductCD.png)
 ````
 
 - **card4:** Discover cards have ~15% fraud rate vs Visa/Mastercard at ~8%
@@ -121,13 +121,13 @@ TransactionAmt is heavily right-skewed. On log scale:
 ### 3.5 Device and Identity Features
 
 ````carousel
-![DeviceType — fraud rate mobile vs desktop](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_03c_DeviceType.png)
+![DeviceType — fraud rate mobile vs desktop](reports/figures/eda_03c_DeviceType.png)
 <!-- slide -->
-![id_30 (OS) — top categories and fraud rate](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_03c_id_30.png)
+![id_30 (OS) — top categories and fraud rate](reports/figures/eda_03c_id_30.png)
 <!-- slide -->
-![id_31 (browser) — top categories and fraud rate](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_03c_id_31.png)
+![id_31 (browser) — top categories and fraud rate](reports/figures/eda_03c_id_31.png)
 <!-- slide -->
-![DeviceInfo — top device types and fraud rate](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_03c_DeviceInfo.png)
+![DeviceInfo — top device types and fraud rate](reports/figures/eda_03c_DeviceInfo.png)
 ````
 
 - Mobile transactions show higher fraud rates than desktop — consistent with card-not-present fraud
@@ -136,7 +136,7 @@ TransactionAmt is heavily right-skewed. On log scale:
 
 ### 3.6 Temporal Analysis — Fraud Rate Over Time
 
-![Fraud rate over TransactionDT — 14-day rolling average](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_04_transactiondt.png)
+![Fraud rate over TransactionDT — 14-day rolling average](reports/figures/eda_04_transactiondt.png)
 
 **Fraud rate is non-stationary.** It starts at ~4% in the first 3 weeks and rises sharply to ~12% by the end of the 182-day window — a **3× increase**. This has direct modelling implications:
 
@@ -147,9 +147,9 @@ TransactionAmt is heavily right-skewed. On log scale:
 ### 3.7 V-Column Analysis
 
 ````carousel
-![V-column inter-correlation heatmap (top 50 by variance)](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_05a_vcols_correlation.png)
+![V-column inter-correlation heatmap (top 50 by variance)](reports/figures/eda_05a_vcols_correlation.png)
 <!-- slide -->
-![Top V-columns by point-biserial correlation with isFraud](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/eda_05b_top_vcols_dist.png)
+![Top V-columns by point-biserial correlation with isFraud](reports/figures/eda_05b_top_vcols_dist.png)
 ````
 
 The 339 V-columns are Vesta's proprietary masked features — undocumented but powerful. They form **correlated blocks** (red clusters in the heatmap), suggesting they encode related signals at different aggregation levels. `V45`, `V258`, `V257`, `V187`, `V200`, `V242–V246` show the highest correlation with fraud and all appeared in the final top-30 feature set.
@@ -387,7 +387,7 @@ Total parameters: 8,642
 
 ### Reconstruction Error Distribution
 
-![Autoencoder reconstruction error — fraud vs non-fraud (linear and log scale)](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/ae_reconstruction_error.png)
+![Autoencoder reconstruction error — fraud vs non-fraud (linear and log scale)](reports/figures/ae_reconstruction_error.png)
 
 | Statistic | Non-Fraud | Fraud | Ratio |
 |-----------|:---------:|:-----:|:-----:|
@@ -422,7 +422,7 @@ Set to the **99th percentile of non-fraud validation reconstruction errors = 0.2
 
 The test set (16,834 rows, fraud = 9.059%) was opened **once, at the very end**, after all modelling decisions were frozen.
 
-![All models — validation (hatched) vs test (solid) metrics](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/final_model_comparison.png)
+![All models — validation (hatched) vs test (solid) metrics](reports/figures/final_model_comparison.png)
 
 ### Three-Model Comparison — Validation vs Test
 
@@ -479,7 +479,7 @@ The test set (16,834 rows, fraud = 9.059%) was opened **once, at the very end**,
 
 ### Extended Threshold Sweep — 0.02 to 0.70
 
-![Business cost curve and fraud catch rate across full range 0.02–0.70](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/extended_cost_sweep.png)
+![Business cost curve and fraud catch rate across full range 0.02–0.70](reports/figures/extended_cost_sweep.png)
 
 19 threshold values swept:
 
@@ -495,7 +495,7 @@ The test set (16,834 rows, fraud = 9.059%) was opened **once, at the very end**,
 
 ### Curve Shape — U-Shape Confirmed
 
-![5-threshold breakdown confirming FN/FP cost crossover](/Users/shriyanshraj/.gemini/antigravity-ide/brain/98590e36-f8e7-4b2b-8f32-e55098f07b90/final_cost_analysis.png)
+![5-threshold breakdown confirming FN/FP cost crossover](reports/figures/final_cost_analysis.png)
 
 The curve has a **genuine interior minimum at 0.26** — not an edge-artifact:
 
