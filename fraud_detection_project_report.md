@@ -106,13 +106,12 @@ TransactionAmt is heavily right-skewed. On log scale:
 
 ### 3.4 Card and Product Categorical Features
 
-````carousel
 ![Card network (card4) — fraud rate by category](reports/figures/eda_03b_card4.png)
-<!-- slide -->
+
 ![Card type (card6) — fraud rate by category](reports/figures/eda_03b_card6.png)
-<!-- slide -->
+
 ![ProductCD — fraud rate by product category](reports/figures/eda_03b_ProductCD.png)
-````
+
 
 - **card4:** Discover cards have ~15% fraud rate vs Visa/Mastercard at ~8%
 - **card6:** Debit cards have notably higher fraud rates than credit cards (fraudsters prefer debit for faster cash-out)
@@ -120,15 +119,14 @@ TransactionAmt is heavily right-skewed. On log scale:
 
 ### 3.5 Device and Identity Features
 
-````carousel
 ![DeviceType — fraud rate mobile vs desktop](reports/figures/eda_03c_DeviceType.png)
-<!-- slide -->
+
 ![id_30 (OS) — top categories and fraud rate](reports/figures/eda_03c_id_30.png)
-<!-- slide -->
+
 ![id_31 (browser) — top categories and fraud rate](reports/figures/eda_03c_id_31.png)
-<!-- slide -->
+
 ![DeviceInfo — top device types and fraud rate](reports/figures/eda_03c_DeviceInfo.png)
-````
+
 
 - Mobile transactions show higher fraud rates than desktop — consistent with card-not-present fraud
 - Certain OS versions (older Android, some Windows builds) are associated with elevated fraud
@@ -146,11 +144,10 @@ TransactionAmt is heavily right-skewed. On log scale:
 
 ### 3.7 V-Column Analysis
 
-````carousel
 ![V-column inter-correlation heatmap (top 50 by variance)](reports/figures/eda_05a_vcols_correlation.png)
-<!-- slide -->
+
 ![Top V-columns by point-biserial correlation with isFraud](reports/figures/eda_05b_top_vcols_dist.png)
-````
+
 
 The 339 V-columns are Vesta's proprietary masked features — undocumented but powerful. They form **correlated blocks** (red clusters in the heatmap), suggesting they encode related signals at different aggregation levels. `V45`, `V258`, `V257`, `V187`, `V200`, `V242–V246` show the highest correlation with fraud and all appeared in the final top-30 feature set.
 
