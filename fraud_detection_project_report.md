@@ -69,9 +69,9 @@ We joined on `TransactionID` using a **left join anchored to the identity table*
 
 ![Class imbalance — fraud vs non-fraud counts and percentages](reports/figures/eda_01_class_imbalance.png)
 
-The dataset contains **125,487 legitimate** and **18,746 fraudulent** transactions — a **1 : 6.7 class ratio**. We handled this with two complementary strategies:
+The dataset contains **132,915 legitimate** and **11,318 fraudulent** transactions — a **1 : 11.7 class ratio** (7.85% fraud rate). We handled this with two complementary strategies:
 
-- **Supervised models:** `class_weight='balanced'` (LR) and `scale_pos_weight=12.41` (XGBoost) — re-weight the loss without altering the training distribution
+- **Supervised models:** `class_weight='balanced'` (LR) and `scale_pos_weight=12.41` (XGBoost, derived from the train split: 105,660 legit / 8,514 fraud) — re-weight the loss without altering the training distribution
 - **Autoencoder:** trains only on non-fraud rows, making imbalance irrelevant by design
 
 ### 3.2 Missingness Analysis
