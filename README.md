@@ -180,16 +180,6 @@ The cost curve is a genuine U-shape with an interior minimum at 0.26 — not an 
 
 ---
 
-## Key Interview Talking Points
-
-1. **Why forward-chaining split?** Fraud rate is non-stationary (+2–3× from start to end of window). Random splits leak future information and produce optimistic validation metrics.
-2. **Why scale_pos_weight instead of SMOTE?** SMOTE creates synthetic fraud rows that may not reflect real fraud patterns; scale_pos_weight re-weights the loss function without modifying the training distribution.
-3. **Why train the autoencoder on non-fraud only?** Including fraud collapses the reconstruction-error gap — the model would learn to reconstruct fraud as well as legitimate transactions. Anomaly detection requires that the "normal" manifold excludes the anomaly class.
-4. **Why is id_02 the top MI feature?** It's undocumented (Vesta proprietary). High MI may indicate a partially-processed risk signal from Vesta's internal system. It dropped from MI rank #1 to XGBoost gain rank #23 — suggesting it has non-linear interactions the linear MI measure overestimates.
-5. **Why does the autoencoder underperform supervised models?** It has no direct access to the fraud label during training. Its strength is robustness to concept drift — it can flag novel fraud patterns that supervised models have never seen labelled examples of.
-
----
-
 ## Requirements
 
 See [`requirements.txt`](requirements.txt) for the pinned dependency list. Key packages:
